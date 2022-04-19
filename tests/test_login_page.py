@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 invalid_email = 'minhad@gmail.com'
-invalid_password = 'minh123'
+invalid_password = 'minh12323423'
 valid_email = 'minh.mchiu@gmail.com'
 valid_password = 'minh123123'
 
@@ -65,12 +65,12 @@ class TestLoginPage(WebDriverSetup):
     # enter email
     email_input = login_page.get_login_email()
     email_input.send_keys(invalid_email)
-    sleep(2)
+    sleep(1)
 
     # enter password
     password_input = login_page.get_login_password()
     password_input.send_keys(valid_password)
-    sleep(2)
+    sleep(1)
 
     # submit
     submit_button = login_page.get_submit_button()
@@ -83,6 +83,32 @@ class TestLoginPage(WebDriverSetup):
     self.assertEqual(error_label.text, invalid_message)
     sleep(1)
 
+  def test_uc4_login_success(self):
+    self.driver.get(LoginLocator().login_page_url)
+    login_page = LoginPage(self.driver)
+
+    # enter email
+    email_input = login_page.get_login_email()
+    email_input.send_keys(valid_email)
+    sleep(1)
+
+    # enter password
+    password_input = login_page.get_login_password()
+    password_input.send_keys(valid_password)
+    sleep(1)
+
+    # submit
+    submit_button = login_page.get_submit_button()
+    submit_button.click()
+    sleep(1)
+
+    # CLick logout
+    self.driver.find_element(by=By.CSS_SELECTOR, value="a[href='/auth/logout']").click()
+    sleep(2)
+
+    # Click confirm logout
+    self.driver.find_element(by=By.XPATH, value='//button[text()="Có 😀"]').click()
+    sleep(2)
 
 if __name__ == '__main__':
   unittest.main()
