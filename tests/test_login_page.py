@@ -56,6 +56,7 @@ class TestLoginPage(WebDriverSetup):
     invalid_message = "Tên đăng nhập hoặc mật khẩu không chính xác."
     self.assertEqual(error_label.text, invalid_message)
     sleep(1)
+    self.driver.save_screenshot('_screenshots/login_page/1.login_invalid_email.png')
 
 
   def test_uc3_invalid_password(self):
@@ -82,6 +83,7 @@ class TestLoginPage(WebDriverSetup):
     invalid_message = "Tên đăng nhập hoặc mật khẩu không chính xác."
     self.assertEqual(error_label.text, invalid_message)
     sleep(1)
+    self.driver.save_screenshot('_screenshots/login_page/2.login_invalid_password.png')
 
   def test_uc4_login_success(self):
     self.driver.get(LoginLocator().login_page_url)
@@ -101,6 +103,7 @@ class TestLoginPage(WebDriverSetup):
     submit_button = login_page.get_submit_button()
     submit_button.click()
     sleep(1)
+    self.driver.save_screenshot('_screenshots/login_page/3.login_success.png')
 
     # CLick logout
     self.driver.find_element(by=By.CSS_SELECTOR, value="a[href='/auth/logout']").click()
@@ -109,6 +112,7 @@ class TestLoginPage(WebDriverSetup):
     # Click confirm logout
     self.driver.find_element(by=By.XPATH, value='//button[text()="Có 😀"]').click()
     sleep(2)
+    self.driver.save_screenshot('_screenshots/login_page/4.logout.png')
 
 if __name__ == '__main__':
   unittest.main()
