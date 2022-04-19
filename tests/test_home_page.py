@@ -33,6 +33,7 @@ class TestHomePage(WebDriverSetup):
 
     home_page = HomePage(self.driver)
     sleep(2)
+    self.driver.save_screenshot('_screenshots/home_page/1.home_page.png')
 
     # Open modal create post form
     home_page.get_textarea_button().click()
@@ -43,6 +44,7 @@ class TestHomePage(WebDriverSetup):
     textarea.click()
     textarea.send_keys(HomeLocator().create_text_post)
     sleep(1)
+    self.driver.save_screenshot('_screenshots/home_page/2.create_post_form.png')
 
     # Submit create
     home_page.get_submit_create_post().click()
@@ -50,6 +52,7 @@ class TestHomePage(WebDriverSetup):
 
     posted_text = self.driver.find_element(by=By.CSS_SELECTOR, value=HomeLocator().posted_text).text
     self.assertEqual(posted_text, HomeLocator().create_text_post.strip())
+    self.driver.save_screenshot('_screenshots/home_page/3.post_created.png')
     # Bug 1: Thiếu chữ cái cuối
 
     posted_post = self.driver.find_element(by=By.CSS_SELECTOR, value=HomeLocator().first_post)
@@ -64,10 +67,12 @@ class TestHomePage(WebDriverSetup):
     liked_button_element = self.driver.find_element(by=By.CSS_SELECTOR, value=HomeLocator().liked_first_post_active)
     current_like_class = liked_button_element.get_attribute('class')
     self.assertEqual(current_like_class, liked_class)
+    self.driver.save_screenshot('_screenshots/home_page/4.post_liked.png')
 
-    # Pin post
+    # open pin post
     self.driver.find_element(by=By.CSS_SELECTOR, value=HomeLocator().pin_first_post).click()
     sleep(1)
+    self.driver.save_screenshot('_screenshots/home_page/5.pin_post_modal.png')
 
     # confirm pin
     confirm_pinned_post = self.driver.find_element(by=By.CSS_SELECTOR, value=HomeLocator().confirm_pinned_post)
@@ -81,6 +86,7 @@ class TestHomePage(WebDriverSetup):
     # Delete post
     delete_pin_post = self.driver.find_element(by=By.CSS_SELECTOR, value=HomeLocator().delete_first_post)
     delete_pin_post.click()
+    self.driver.save_screenshot('_screenshots/home_page/6.delete_post_modal.png')
     sleep(2)
 
     # confirm delete
