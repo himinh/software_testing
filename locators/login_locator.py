@@ -5,3 +5,8 @@ class LoginLocator():
   password='#passwordLogin'
   submit=".submit-btn"
   error_message=".alert.alert-danger .message"
+
+class LoginAdminLocator():
+  email_login='form.sign-in input[name="email"]'
+  password_login='form.sign-in input[name="password"]'
+  submit_login='//button[text()="Sign in"]'

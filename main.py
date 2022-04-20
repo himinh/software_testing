@@ -1,7 +1,8 @@
 from unittest import TestLoader, TestSuite, TextTestRunner
-from tests.test_home_page import TestHomePage
-from tests.test_login_page import TestLoginPage
-from tests.test_search_chat_user import TestSearchChatUser
+from tests import TestHomePage
+from tests import TestLoginPage
+from tests import TestSearchChatUser
+from tests import TestAdminPage
 
 import testtools as testtools
 
@@ -12,7 +13,8 @@ if __name__ == "__main__":
   test_suite = TestSuite((
     # test_loader.loadTestsFromTestCase(TestLoginPage),
     # test_loader.loadTestsFromTestCase(TestHomePage),
-    test_loader.loadTestsFromTestCase(TestSearchChatUser),
+    # test_loader.loadTestsFromTestCase(TestSearchChatUser),
+    test_loader.loadTestsFromTestCase(TestAdminPage),
   ))
 
   test_runner = TextTestRunner(verbosity=2)
