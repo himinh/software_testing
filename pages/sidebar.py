@@ -18,3 +18,6 @@ class Sidebar():
 
   def click_logout(self):
     self.logout_link.click()
+
+  def click_search_link(self):
+    self.search_link.click()
