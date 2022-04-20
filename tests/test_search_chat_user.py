@@ -44,7 +44,7 @@ class TestSearchChatUser(WebDriverSetup):
     # self.driver.save_screenshot('_screenshots/home_page/home_page.png')
 
     # Navigate search Page
-    sidebar.get_search_bar().click()
+    sidebar.get_search_link().click()
     sleep(2)
 
     # Init search page

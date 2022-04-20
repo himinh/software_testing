@@ -1,5 +1,7 @@
 from pages import LoginPage
+from pages import HomePage
 from locators import LoginLocator
+from locators import ModalLocator
 from WebDriverSetup import WebDriverSetup
 import unittest
 from time import sleep
@@ -13,42 +15,34 @@ valid_password = 'minh123123'
 
 class TestLoginPage(WebDriverSetup):
 
-  # def test_uc1_login_page(self):
-  #   self.driver.get(LoginLocator().login_page_url)
-  #   login_page_title = "SignIn - SignUp"
+  def test_uc1_login_page(self):
+    self.driver.get(LoginLocator().login_page_url)
+    login_page_title = "SignIn - SignUp"
 
-  #   try:
-  #     if self.driver.title == login_page_title:
-  #       print("LoginPage loaded successfully")
-  #       self.assertEqual(self.driver.title, login_page_title)
-  #   except Exception as error:
-  #     print(error+"LoginPage Failed to load")
-  #   sleep(1)
+    try:
+      if self.driver.title == login_page_title:
+        print("LoginPage loaded successfully")
+        self.assertEqual(self.driver.title, login_page_title)
+    except Exception as error:
+      print(error+"LoginPage Failed to load")
+    sleep(1)
 
-  #   login_page = LoginPage(self.driver)
-  #   login_heading = "Đăng nhập"
+    login_page = LoginPage(self.driver)
+    login_heading = "Đăng nhập"
 
-  #   self.assertEqual(login_page.get_login_heading().text, login_heading)
-  #   sleep(1)
+    self.assertEqual(login_page.get_login_heading().text, login_heading)
+    sleep(1)
 
 
   def test_uc2_invalid_email(self):
     self.driver.get(LoginLocator().login_page_url)
     login_page = LoginPage(self.driver)
 
-    # enter email
-    email_input = login_page.get_login_email()
-    email_input.send_keys(invalid_email)
+    # Enter values
+    login_page.enter_login(invalid_email, valid_password)
     sleep(1)
-
-    # enter password
-    password_input = login_page.get_login_password()
-    password_input.send_keys(valid_password)
-    sleep(1)
-
-    # submit
-    submit_button = login_page.get_submit_button()
-    submit_button.click()
+    # Submit
+    login_page.submit_login()
     sleep(1)
 
     # Check result
@@ -63,19 +57,12 @@ class TestLoginPage(WebDriverSetup):
     self.driver.get(LoginLocator().login_page_url)
     login_page = LoginPage(self.driver)
 
-    # enter email
-    email_input = login_page.get_login_email()
-    email_input.send_keys(invalid_email)
+    # Enter values
+    login_page.enter_login(valid_email, invalid_password)
     sleep(1)
 
-    # enter password
-    password_input = login_page.get_login_password()
-    password_input.send_keys(valid_password)
-    sleep(1)
-
-    # submit
-    submit_button = login_page.get_submit_button()
-    submit_button.click()
+    # Submit
+    login_page.submit_login()
     sleep(1)
 
     # Check result
@@ -85,34 +72,30 @@ class TestLoginPage(WebDriverSetup):
     sleep(1)
     self.driver.save_screenshot('_screenshots/login_page/2.login_invalid_password.png')
 
+
   def test_uc4_login_success(self):
     self.driver.get(LoginLocator().login_page_url)
     login_page = LoginPage(self.driver)
 
-    # enter email
-    email_input = login_page.get_login_email()
-    email_input.send_keys(valid_email)
-    sleep(1)
-
-    # enter password
-    password_input = login_page.get_login_password()
-    password_input.send_keys(valid_password)
+    # Enter values
+    login_page.enter_login(valid_email, valid_password)
     sleep(1)
 
     # submit
-    submit_button = login_page.get_submit_button()
-    submit_button.click()
+    login_page.submit_login()
     sleep(1)
     self.driver.save_screenshot('_screenshots/login_page/3.login_success.png')
 
+    home_page = HomePage(self.driver)
     # CLick logout
-    self.driver.find_element(by=By.CSS_SELECTOR, value="a[href='/auth/logout']").click()
+    home_page.logout()
     sleep(2)
 
     # Click confirm logout
-    self.driver.find_element(by=By.XPATH, value='//button[text()="Có 😀"]').click()
+    self.driver.find_element(by=By.XPATH, value=ModalLocator().confirm_logout).click()
     sleep(2)
     self.driver.save_screenshot('_screenshots/login_page/4.logout.png')
+
 
 if __name__ == '__main__':
   unittest.main()

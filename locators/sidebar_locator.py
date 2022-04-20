@@ -1,2 +1,3 @@
 class SidebarLocator():
-  search_bar = 'a[href="/search"]'
+  search_link = 'a[href="/search"]'
+  logout_link = 'a[href="/auth/logout"]'
