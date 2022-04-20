@@ -2,8 +2,10 @@ from pages import LoginAdminPage
 from pages import Sidebar
 from pages import AdminPage
 from pages import AdminModal
+import json
 
 from locators import AdminModalLocator
+from locators import AdminLocator
 
 
 from WebDriverSetup import WebDriverSetup
@@ -16,9 +18,9 @@ valid_email = 'minh.mchiu@gmail.com'
 valid_password = 'minh123123'
 admin_url = 'https://social-network-awesome.herokuapp.com/admin'
 
-first_name = 'user'
+first_name = 'user2'
 last_name = 'new'
-email = 'usernew@gmail.com'
+email = 'usernew2@gmail.com'
 password = 'usernew123'
 
 class TestAdminPage(WebDriverSetup):
@@ -52,8 +54,14 @@ class TestAdminPage(WebDriverSetup):
     admin_modal.submit_new_account()
     sleep(5)
 
-    admin_page.logout()
-    sleep(2)
+    # Check new user
+    new_user_str = self.driver.find_element(by=By.XPATH, value=AdminLocator().user_row_1).get_attribute('data-user')
+    new_user = json.loads(new_user_str)
+
+    self.assertEqual(new_user['firstName'], first_name)
+    self.assertEqual(new_user['lastName'], last_name)
+    self.assertEqual(new_user['email'], email)
+    self.assertEqual(new_user['role'], role_text)
 
   def test_uc11_login_admin(self):
     self.driver.get(admin_url)
@@ -74,6 +82,37 @@ class TestAdminPage(WebDriverSetup):
     admin_page.logout()
     sleep(2)
     self.driver.save_screenshot('_screenshots/admin_page/4.logout_success.png')
+
+  def test_uc12_delete_created_user(self):
+    self.driver.get(admin_url)
+
+    # Login
+    login_page = LoginAdminPage(self.driver)
+    login_page.enter_login(valid_email, valid_password)
+    sleep(2)
+    login_page.submit_login()
+    sleep(2)
+
+    # Admin page
+    admin_page = AdminPage(self.driver)
+
+    # Get user row 1
+    user_1_str = admin_page.get_data_user_row_1()
+
+    # Click delete
+    admin_page.click_button_delete_user()
+    sleep(2)
+
+    # submit
+    confirm_delete_user = self.driver.find_element(by=By.CSS_SELECTOR, value=AdminModalLocator().confirm_delete_user)
+    confirm_delete_user.click()
+    sleep(5)
+
+    # Check user row 1
+    new_user_str = self.driver.find_element(by=By.XPATH, value=AdminLocator().user_row_1).get_attribute('data-user')
+    new_user = json.loads(new_user_str)
+    user_1 = json.loads(user_1_str)
+    self.assertNotEqual(new_user['email'], user_1['email'])
 
 if __name__ == '__main__':
   unittest.main()

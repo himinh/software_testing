@@ -7,3 +7,4 @@ class AdminModalLocator():
   role_user_text = 'user'
   role_admin_text = 'admin'
   submit_created='#submitCreateNewUser'
+  confirm_delete_user = '#submitDeleteUser'
