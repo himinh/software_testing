@@ -10,6 +10,12 @@ class ProfilePage():
     self.message_button = driver.find_element(by=By.CSS_SELECTOR, value=ProfileLocator().message_button)
     self.follow_button = driver.find_element(by=By.CSS_SELECTOR, value=ProfileLocator().follow_button)
 
+  def click_message_button(self):
+    self.message_button.click()
+
+  def click_follow_button(self):
+    self.follow_button.click()
+
   def get_message_button(self):
     return self.message_button
 
