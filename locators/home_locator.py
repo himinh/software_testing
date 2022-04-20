@@ -4,12 +4,13 @@ class HomeLocator():
   textarea_button = '#buttonPostFormModal'
   textarea_post = '#postTextarea'
 
-  create_text_post = 'Good morning! '
+  text_post = 'Good morning! '
   submit_create_post = '#submitCreatePost'
 
   first_post = '.posts .post:first-child'
-  posted_text = '.posts .post:first-child .post_body span'
+  posted_post = '.posts .post:first-child .post_body span'
 
+  container_like_first_post = '.posts .post:first-child .pink .post_button-container_content'
   like_first_post = '.posts .post:first-child button.like-button'
   liked_first_post_active = '.posts .post:first-child .pink .active'
 
