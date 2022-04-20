@@ -5,3 +5,5 @@ from locators.message_locator import *
 from locators.profile_locator import *
 from locators.sidebar_locator import *
 from locators.modal_locator import *
+from locators.admin_locator import *
+from locators.admin_modal_locator import *
