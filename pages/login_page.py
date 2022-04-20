@@ -25,3 +25,14 @@ class LoginPage():
 
   def get_error_label(self):
     return self.driver
+
+  def enter_login(self, email, password):
+    self.login_email.send_keys(email)
+    self.login_password.send_keys(password)
+
+  def clear_form(self):
+    self.login_email.clear()
+    self.login_password.clear()
+
+  def submit_login(self):
+    self.submit_button.click()
