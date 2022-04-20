@@ -40,8 +40,11 @@ class TestSearchChatUser(WebDriverSetup):
     search_page = SearchPage(self.driver)
     search_page.enter_search('minh')
     sleep(2)
+    self.driver.save_screenshot('_screenshots/search_page/1.search_name_minh.png')
+
     search_page.submit_search()
     sleep(3)
+    self.driver.save_screenshot('_screenshots/search_page/2.result_search_name_minh.png')
 
 
     # Select user navigate to user profile
@@ -51,10 +54,12 @@ class TestSearchChatUser(WebDriverSetup):
 
     # Profile page
     profile_page = ProfilePage(self.driver)
+    self.driver.save_screenshot('_screenshots/search_page/3.profile_page.png')
 
     # toggle follow
     profile_page.click_follow_button()
     sleep(2)
+    self.driver.save_screenshot('_screenshots/search_page/4.toggle_follow.png')
 
     # navigate message
     profile_page.click_message_button()
@@ -62,10 +67,14 @@ class TestSearchChatUser(WebDriverSetup):
 
     # Init message page
     message_page = MessagePage(self.driver)
+    self.driver.save_screenshot('_screenshots/search_page/2.message_page.png')
+
     message_page.enter_message('Hello Min!')
     sleep(2)
+    self.driver.save_screenshot('_screenshots/search_page/6.enter_message.png')
     message_page.submit_message()
     sleep(4)
+    self.driver.save_screenshot('_screenshots/search_page/7.send_message_success.png')
 
 if __name__ == '__main__':
   unittest.main()
