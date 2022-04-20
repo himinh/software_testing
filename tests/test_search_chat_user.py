@@ -20,7 +20,7 @@ valid_email = 'minh.mchiu@gmail.com'
 valid_password = 'minh123123'
 
 class TestSearchChatUser(WebDriverSetup):
-  def test_uc9_create_post_success(self):
+  def test_uc9_find_user_follow_and_send_message(self):
     self.driver.get(LoginLocator().login_page_url)
 
     # Login
