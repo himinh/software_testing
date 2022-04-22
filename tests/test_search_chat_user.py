@@ -67,9 +67,9 @@ class TestSearchChatUser(WebDriverSetup):
 
     # Init message page
     message_page = MessagePage(self.driver)
-    self.driver.save_screenshot('_screenshots/search_page/2.message_page.png')
+    self.driver.save_screenshot('_screenshots/search_page/5.message_page.png')
 
-    message_page.enter_message('Hello Min!')
+    message_page.enter_message('Good morning!')
     sleep(2)
     self.driver.save_screenshot('_screenshots/search_page/6.enter_message.png')
     message_page.submit_message()
