@@ -124,7 +124,7 @@ class TestHomePage(WebDriverSetup):
     first_post_id = home_page.get_first_post().get_attribute('data-id')
 
     # Open modal delete post
-    delete_pin_post = home_page.click_delete_post()
+    home_page.click_delete_post()
     self.driver.save_screenshot('_screenshots/home_page/6.delete_post_modal.png')
     sleep(2)
 

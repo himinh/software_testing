@@ -18,13 +18,13 @@ valid_email = 'minh.mchiu@gmail.com'
 valid_password = 'minh123123'
 admin_url = 'https://social-network-awesome.herokuapp.com/admin'
 
-first_name = 'user2'
+first_name = 'user3'
 last_name = 'new'
-email = 'usernew2@gmail.com'
+email = 'usernew3@gmail.com'
 password = 'usernew123'
 
 class TestAdminPage(WebDriverSetup):
-  def test_uc10_create_new_success(self):
+  def test_uc10_create_new_user_success(self):
     self.driver.get(admin_url)
 
     # Login
@@ -102,6 +102,7 @@ class TestAdminPage(WebDriverSetup):
     # Click delete
     admin_page.click_button_delete_user()
     sleep(2)
+    self.driver.save_screenshot('_screenshots/admin_page/6.new_account_info.png')
 
     # submit
     confirm_delete_user = self.driver.find_element(by=By.CSS_SELECTOR, value=AdminModalLocator().confirm_delete_user)

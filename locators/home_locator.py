@@ -1,10 +1,8 @@
 class HomeLocator():
-  login_page_url = 'https://social-network-awesome.herokuapp.com/auth/login'
-
   textarea_button = '#buttonPostFormModal'
   textarea_post = '#postTextarea'
 
-  text_post = 'Good morning! '
+  text_post = 'Good morning!'
   submit_create_post = '#submitCreatePost'
 
   first_post = '.posts .post:first-child'
