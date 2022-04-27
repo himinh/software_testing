@@ -4,6 +4,10 @@
 
 ##### Link website: https://social-network-awesome.herokuapp.com/
 
+##### Link video: https://social-network-awesome.herokuapp.com/
+
+##### Link Test case: https://docs.google.com/spreadsheets/d/1aYqFa_K0Fgi_HPg1_P2Xe4AZBW-J2hC2zE94W8E02Q8/edit?usp=sharing
+
 #### By Minh ChiuCam
 
 ## Technologies Used

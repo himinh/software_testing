@@ -1,4 +1,5 @@
 from pages.login_page import *
+from pages.register_page import *
 from pages.home_page import *
 from pages.search_page import *
 from pages.message_page import *

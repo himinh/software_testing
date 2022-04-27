@@ -1,4 +1,6 @@
 from locators.login_locator import *
+from locators.register_locator import *
+from locators.gmail_locator import *
 from locators.home_locator import *
 from locators.search_locator import *
 from locators.message_locator import *

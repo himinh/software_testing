@@ -3,6 +3,7 @@ from tests import TestHomePage
 from tests import TestLoginPage
 from tests import TestSearchChatUser
 from tests import TestAdminPage
+from tests import TestRegisterPage
 
 import testtools as testtools
 
@@ -11,6 +12,7 @@ if __name__ == "__main__":
   test_loader = TestLoader()
   # Test Suite is used since there are multiple test cases
   test_suite = TestSuite((
+    test_loader.loadTestsFromTestCase(TestRegisterPage),
     test_loader.loadTestsFromTestCase(TestLoginPage),
     test_loader.loadTestsFromTestCase(TestHomePage),
     test_loader.loadTestsFromTestCase(TestSearchChatUser),

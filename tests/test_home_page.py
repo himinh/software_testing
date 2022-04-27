@@ -43,7 +43,7 @@ class TestHomePage(WebDriverSetup):
 
     # Submit post
     home_page.submit_post()
-    sleep(1)
+    sleep(3)
 
     # Check posted post
     posted_text = self.driver.find_element(by=By.CSS_SELECTOR, value=HomeLocator().posted_post).text
