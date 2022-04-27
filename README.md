@@ -4,7 +4,7 @@
 
 ##### Link website: https://social-network-awesome.herokuapp.com/
 
-##### Link video: https://www.youtube.com/watch?v=V6-FZuKJ6kI
+##### Link video: https://www.youtube.com/watch?v=j4v1ZF11hLg
 
 ##### Link Test case: https://docs.google.com/spreadsheets/d/1aYqFa_K0Fgi_HPg1_P2Xe4AZBW-J2hC2zE94W8E02Q8/edit?usp=sharing
 
